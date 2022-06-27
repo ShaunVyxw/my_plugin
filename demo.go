@@ -8,11 +8,13 @@ import (
 
 // Config the plugin configuration.
 type Config struct {
+	enable bool
 }
 
 // CreateConfig creates the default plugin configuration.
 func CreateConfig() *Config {
 	return &Config{
+		enable: true,
 	}
 }
 
@@ -24,8 +26,12 @@ type Demo struct {
 
 // New created a new Demo plugin.
 func New(ctx context.Context, next http.Handler, config *Config, name string) (http.Handler, error) {
-	return &Demo{
-	}, nil
+	if config.enable {
+		return &Demo{
+		}, nil
+	} else {
+		return nil, nil
+	}
 }
 
 func (a *Demo) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
@@ -41,7 +47,6 @@ func (a *Demo) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 	req.Header.Set("X-Forwarded-Host", xForwardedHost)
 	req.Header.Set("X-Original-METHOD", xOriginalMethod)
 	req.Header.Set("X-Forwarded-Proto", xForwardedProto)
-
 
 	a.next.ServeHTTP(rw, req)
 }
