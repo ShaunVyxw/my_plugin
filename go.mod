@@ -1,3 +1,3 @@
-module github.com/traefik/plugindemo
+module github.com/ShaunVyxw/my_plugin
 
-go 1.16
+go 1.17

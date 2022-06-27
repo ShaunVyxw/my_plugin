@@ -1,9 +1,9 @@
-displayName: Demo Plugin
+displayName: my plugin
 type: middleware
 
-import: github.com/traefik/plugindemo
+import: github.com/ShaunVyxw/my_plugin
 
-summary: '[Demo] Add Request Header'
+summary: 'my_plugin'
 
 testData: {}
 
