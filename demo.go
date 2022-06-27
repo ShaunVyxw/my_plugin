@@ -43,10 +43,10 @@ func (a *Demo) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 		xForwardedProto = "https"
 	}
 
-	req.Header.Set("X-Origin-URI", xOriginUri)
-	req.Header.Set("X-Forwarded-Host", xForwardedHost)
-	req.Header.Set("X-Original-METHOD", xOriginalMethod)
-	req.Header.Set("X-Forwarded-Proto", xForwardedProto)
+	req.Header.Add("X-Origin-URI", xOriginUri)
+	req.Header.Add("X-Forwarded-Host", xForwardedHost)
+	req.Header.Add("X-Original-METHOD", xOriginalMethod)
+	req.Header.Add("X-Forwarded-Proto", xForwardedProto)
 
 	a.next.ServeHTTP(rw, req)
 }
