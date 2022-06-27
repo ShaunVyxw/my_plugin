@@ -8,13 +8,13 @@ import (
 
 // Config the plugin configuration.
 type Config struct {
-	enable bool
+	Enable bool
 }
 
 // CreateConfig creates the default plugin configuration.
 func CreateConfig() *Config {
 	return &Config{
-		enable: true,
+		Enable: true,
 	}
 }
 
@@ -26,7 +26,7 @@ type Demo struct {
 
 // New created a new Demo plugin.
 func New(ctx context.Context, next http.Handler, config *Config, name string) (http.Handler, error) {
-	if config.enable {
+	if config.Enable {
 		return &Demo{
 		}, nil
 	} else {
